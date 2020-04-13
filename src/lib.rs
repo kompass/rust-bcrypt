@@ -4,7 +4,7 @@ use std::convert::AsRef;
 use std::fmt;
 use std::str::FromStr;
 
-mod b64;
+pub mod b64;
 mod bcrypt;
 mod errors;
 
