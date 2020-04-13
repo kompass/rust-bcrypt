@@ -4,7 +4,7 @@ use std::convert::AsRef;
 use std::fmt;
 use std::str::FromStr;
 
-pub mod b64;
+mod b64;
 mod bcrypt;
 mod errors;
 
@@ -47,6 +47,10 @@ impl HashParts {
     /// Get the bcrypt hash salt
     pub fn get_salt(&self) -> String {
         self.salt.clone()
+    }
+
+    pub fn get_decoded_salt(&self) -> BcryptResult<Vec<u8>> {
+        b64::decode(&self.salt)
     }
 
     /// Creates the bcrypt hash string from all its part, allowing to customize the version.
